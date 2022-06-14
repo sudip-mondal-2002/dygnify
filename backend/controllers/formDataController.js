@@ -2,7 +2,7 @@ const FormDataModel = require('../database/models/FormData');
 
 const readAllForms = async (req, res) => {
     try {
-        const forms = await FormDataModel.find();
+        const forms = await FormDataModel.find({}).sort({createdAt: -1});
         res.status(200).json(forms);
     }catch(err){
         console.log(err);
