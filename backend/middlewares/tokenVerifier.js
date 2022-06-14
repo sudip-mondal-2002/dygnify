@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const verifyJWT = (req,res,next) => {
-    const token = req.cookies?.token;
+    const token = req.headers['x-auth-token'];
     if(!token){
         return res.status(401).json({message: 'Unauthorized'});
     }

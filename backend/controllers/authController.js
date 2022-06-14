@@ -23,10 +23,10 @@ const login = async (req, res) => {
             username: user.username,
             userId: user._id
         }, process.env.JWT_SECRET, { expiresIn: '1d' });
-        res.cookie('token', token, { httpOnly: false });
         res.status(200).json({
             message: 'Login successful',
-            user: user
+            user: user,
+            token: token
         });
     } catch (err) {
         console.log(err);
