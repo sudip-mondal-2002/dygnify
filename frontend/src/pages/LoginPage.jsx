@@ -33,7 +33,7 @@ const LoginPage = () => {
         }
     }
     React.useEffect(() => {
-        if (Cookies.get("token")) {
+        if (Cookies.get("token")!=='') {
             navigate("/admin");
         }
     })
@@ -41,7 +41,7 @@ const LoginPage = () => {
         <Container sx={{
             marginLeft: "60px",
         }}>
-            {Cookies.get("token") &&
+            {!Cookies.get("token") &&
                 <>
                     <Typography
                         variant="h4"
