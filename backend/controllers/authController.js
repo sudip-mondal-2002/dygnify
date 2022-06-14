@@ -19,7 +19,10 @@ const login = async (req, res) => {
         if(!isMatch){
             return res.status(401).json({message: 'Invalid password'});
         }
-        const token = jwt.sign({id: user._id}, process.env.JWT_SECRET, {expiresIn: '1d'});
+        const token = jwt.sign({
+            username: user.username,
+            userId: user._id
+        }, process.env.JWT_SECRET, {expiresIn: '1d'});
         res.cookie('token', token, {httpOnly: true, sameSite: true});
         res.status(200).json({
             message: 'Login successful',
@@ -27,7 +30,7 @@ const login = async (req, res) => {
         });
     }catch(err){
         console.log(err);
-        res.status(500).json(err);
+        res.status(500).json({err:err.message});
     }
 }
 

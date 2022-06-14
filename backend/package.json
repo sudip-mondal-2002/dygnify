@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "migrate": "migrate-mongo up",
-    "migrate:reset": "migrate-mongo down && migrate-mongo up",
-    "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
-    "pretest": "cross-env NODE_ENV=test npm run migrate:reset",
+    "migrate": "cd database && migrate-mongo up",
+    "test": "cross-env NODE_ENV=test jest --testTimeout=10000 --forceExit",
+    "pretest": "cross-env NODE_ENV=test npm run migrate",
     "start:dev": "nodemon index.js",
     "start": "node index.js"
   },

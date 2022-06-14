@@ -5,7 +5,8 @@ const readAllForms = async (req, res) => {
         const forms = await FormDataModel.find();
         res.status(200).json(forms);
     }catch(err){
-        res.status(500).json(err);
+        console.log(err);
+        res.status(500).json({err:err.message});
     }
 }
 
@@ -50,7 +51,10 @@ const submitForm = async (req, res) => {
         const form = await FormDataModel.create(data);
         res.status(201).json(form);
     }catch(err){
-        res.status(500).json(err);
+        if(err.name === 'ValidationError'){
+            return res.status(400).json({err:err.message});
+        }
+        res.status(500).json({err:err.message});
     }
 }
 
