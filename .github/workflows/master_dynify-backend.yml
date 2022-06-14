@@ -20,8 +20,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '14.x'
+        
 
       - name: npm install, build, and test
+        working-directory: ./backend
         run: |
           npm install
           npm run build --if-present
@@ -53,4 +55,4 @@ jobs:
           app-name: 'dynify-backend'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CA673EDB4E6E4B84AA9C399D16185840 }}
-          package: .
+          package: ./backend
