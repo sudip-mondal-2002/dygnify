@@ -60,4 +60,4 @@ jobs:
           app-name: 'dynify-backend'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CA673EDB4E6E4B84AA9C399D16185840 }}
-          package: ./backend
+          package: .
