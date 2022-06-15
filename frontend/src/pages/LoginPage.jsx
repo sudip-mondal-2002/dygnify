@@ -33,7 +33,7 @@ const LoginPage = () => {
         }
     }
     React.useEffect(() => {
-        if (Cookies.get("token")!=='') {
+        if (Cookies.get("token")) {
             navigate("/admin");
         }
     })
